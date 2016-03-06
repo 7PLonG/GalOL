@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
+			
+			body {
+				background-color: aquamarine;
+			}
+			
+			.f-mid {
+				/*  完全垂直居中 ,需要设置元素宽高 */
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			.f-dn {
+				display: none;
+			}
+			
+			#begin,
+			#setSpace {
+				position: fixed;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(0, 0, 0, 0.6);
+			}
+			
+			#setSpace {
+				z-index: 20;
+			}
+			
+			#begin {
+				z-index: 30;
+			}
+			
+			#begin .swap {
+				width: 600px;
+				height: 400px;
+				background-color: #fff;
+			}
+			#begin button{
+				margin: 100px 46px;
+				font-size: 50px;
+				display:inline-block;
+				height: 200px;
+				width: 200px;
+			}
+			
+			#setSpace .swap {
+				width: 600px;
+				height: 300px;
+				background-color: #fff;
+			}
+			
+			#workSpace {
+				position: relative;
+				background-color: darkgray;
+				width: 90%;
+				height: 100%;
+			}
+			
+			#comicWin {
+				background-color: coral;
+				position: absolute;
+			}
+			#novelWin{
+				position: absolute;
+				top:70px;
+				width: 800px;
+				height: 620px;
+			}
+			#novelPre{
+				height: 410px;
+				width: 100%;
+			}
+			#novelEd {
+				/*position: fixed;
+				bottom: 100px;*/
+				height: 200px;
+			}
+			
+			#novelEd iframe {
+				font-size: 20px;
+				height: 100%;
+				width: 100%;
+				border: solid 1px;
+			}
+			
+			#novelEd #pulish {
+				width: 30px;
+				height: 3px;
+				background: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="begin" class="">
+			<div class="swap f-mid">
+				<button id="build" type="submit" value="">新建</button>
+				<button id="loadNovel" type="submit" value="">载入</button>
+			</div>
+		</div>
+
+		<div id="setSpace" class="f-dn">
+			<div class="swap f-mid">
+				<form action="" method="post">
+					<div class="comicWH">
+						<input type="radio" name="fbl" value="1280*720"  checked="checked"/>1280*720
+						<input type="radio" name="fbl" value="1024*768" />1024*768
+						<input type="radio" name="fbl" value="800*600" />800*600
+					</div>
+
+					<input id="setUp" type="button" value="确定" />
+				</form>
+
+			</div>
+		</div>
+		<div id="workSpace" class="f-dn">
+			<div id="comicWin">
+
+			</div>
+			<div id="novelWin">
+				<div id="novelPre">
+
+				</div>
+				<div id="novelCtrl">
+
+				</div>
+				<div id="novelEd">
+					<iframe id="editor"></iframe>
+					<div id="pulish">
+						<button type="submit" value="">发送</button>
+					</div>
+					<!--<textarea name="" rows="" cols=""  wrap="physical"></textarea>-->
+				</div>
+
+			</div>
+		</div>
+
+	</body>
+<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
