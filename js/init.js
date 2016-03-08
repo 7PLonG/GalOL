@@ -6,9 +6,9 @@ function init() {
 	$("#build").click(function() {
 		$("#begin").addClass("f-dn");
 		setcomicWin();
-	comicMove("#comicWin",60);
+		comicMove("#comicWin", 60);
 		edit();
-		
+
 	})
 }
 
@@ -16,17 +16,20 @@ function setcomicWin() {
 	//设置预览CG窗口大小。匹配正常成品比例
 	//改进：可以在这里传入形参用来动态生成新比例模式。满足未来需求
 	$("#setSpace").show();
-	var comicWin = $("#comicWin")[0];
-	var comicWH = $("#comicWH")[0];
+	//	var comicWin = $("#comicWin")[0];
+	//	var comicWH = $("#comicWH")[0];
 	$("#setUp").click(function() {
 		var setWH = $(".comicWH :checked")[0].value;
 		COMICWINWIDTH = setWH.split("*")[0] <= 800 ? 800 : window.screen.availWidth * 0.6;
 		COMICWINHEIGHT = COMICWINWIDTH / setWH.split("*")[0] * setWH.split("*")[1];
 		$("#setSpace").hide();
 		$("#workSpace").show();
-		$("#comicWin").css({"width": (COMICWINWIDTH + "px"),"height": (COMICWINHEIGHT + "px")});
+		$("#comicWin").css({
+			"width": (COMICWINWIDTH + "px"),
+			"height": (COMICWINHEIGHT + "px")
+		});
 	})
-	
+
 }
 
 function edit() {
@@ -34,6 +37,7 @@ function edit() {
 	$d = $("#editor")[0].contentWindow.document; // IE、FF都兼容
 	$d.designMode = "on";
 	$d.contentEditable = true;
+
 	$d.open();
 	$d.close();
 	$('#pulish').click(function() {
@@ -53,19 +57,34 @@ function edit() {
 //			function novelpreHide() {
 //			}
 //		}
-function comicMove(id,remain) {
-	$(id).mouseout(function() {
-		console.log("111");
-		console.log(COMICWINHEIGHT);
-		$(this).stop(true,false).animate({
-			"top": (-COMICWINHEIGHT + remain) + "px"
-		}, 1000)
-	}).mouseover(function() {
-		console.log("222");
-		$(this).stop(true,false).animate({
-			"top": 0 + "px"
+function comicMove(id, remain) {
+	$(id).on('mouseleave',function(){
+		$(this).stop(true, false).animate({
+			"top": (-COMICWINHEIGHT + remain)
+		},1000)
+	})
+	$(id).on('mouseenter',function() {
+		console.log("移入");
+		$(this).stop(true, false).animate({
+			"top":0
 		}, 1000)
 	})
+	
+//	$(id).mouseout(function() {
+//		console.log("移出");
+//		console.log(COMICWINHEIGHT);
+//		$(this).stop(true, false).animate({
+//			"top": (-COMICWINHEIGHT + remain) + "px"
+//		}, 1000)
+//	}).mouseenter(function() {
+//		console.log("移入");
+//		$(this).stop(true, false).animate({
+//			"top": 0 + "px"
+//		}, 1000)
+//	})
+}
+
+function getStyle(obj, attr) {
+	return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
 }
 init()
-		

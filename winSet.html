@@ -78,6 +78,7 @@
 			#comicWin {
 				background-color: coral;
 				position: absolute;
+				z-index: 10;   /*防止下方文本编辑模块占用位置导致鼠标移入移出行为失效。*/
 			}
 			#novelWin{
 				position: absolute;
@@ -89,9 +90,15 @@
 				height: 410px;
 				width: 100%;
 			}
+			#novelCtrl li{
+				display: inline-block;
+				width: 30px;
+				height: 10px;
+				background-color: #FFFFFF;
+			}
 			#novelEd {
-				/*position: fixed;
-				bottom: 100px;*/
+				position: absolute;
+				width: 800px;
 				height: 200px;
 			}
 			
@@ -107,6 +114,7 @@
 				height: 3px;
 				background: red;
 			}
+			
 		</style>
 	</head>
 
@@ -122,7 +130,7 @@
 			<div class="swap f-mid">
 				<form action="" method="post">
 					<div class="comicWH">
-						<input type="radio" name="fbl" value="1280*720"  checked="checked"/>1280*720
+						<input type="radio" name="fbl" value="1280*720" checked="checked" />1280*720
 						<input type="radio" name="fbl" value="1024*768" />1024*768
 						<input type="radio" name="fbl" value="800*600" />800*600
 					</div>
@@ -141,7 +149,12 @@
 
 				</div>
 				<div id="novelCtrl">
-
+					<ul>
+						<li>red</li>
+						<li>20PX</li>
+						<li></li>
+						<li></li>
+					</ul>
 				</div>
 				<div id="novelEd">
 					<iframe id="editor"></iframe>
@@ -155,6 +168,8 @@
 		</div>
 
 	</body>
-<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
-
+	<script src="js/init.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+	</script>
 </html>
